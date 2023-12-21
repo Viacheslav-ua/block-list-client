@@ -5,6 +5,9 @@ import { useQuery } from '@tanstack/react-query'
 import { UiButton } from '@/shared/ui/ui-button'
 import { UiTextField } from '@/shared/ui/ui-text-field'
 import { UiSelectField } from '@/shared/ui/ui-select-field'
+import { UiLink } from '@/shared/ui/ui-link'
+import { UiSpinner } from '@/shared/ui/ui-spinner'
+import { UiPageSpinner } from '@/shared/ui/ui-page-spinner'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,7 +30,11 @@ export default function HomePage() {
       <UiButton variant="outlined">Sign Out</UiButton>
       <UiButton disabled variant="primary">Hay</UiButton>
       <UiTextField label='Text field' inputProps={{placeholder: 'input text'}} error='error' />
-      <UiSelectField className='w-60' selectProps={{name: 'select text'}} options={[{value: '1', label: 'One'}, {value: '2', label: 'Two'}]}  />
+      <UiSelectField className='w-60' selectProps={{name: 'select text'}} options={[{value: '1', label: 'One'},     {value: '2', label: 'Two'}]}  />
+
+      <UiLink href={'/'}>Q2EEWGTwaefg</UiLink>
+      <UiSpinner className='text-teal-600 h-20 w-20' />
+      {/* <UiPageSpinner /> */}
     </main>
   )
 }
