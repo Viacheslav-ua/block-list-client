@@ -8,6 +8,8 @@ import { UiSelectField } from '@/shared/ui/ui-select-field'
 import { UiLink } from '@/shared/ui/ui-link'
 import { UiSpinner } from '@/shared/ui/ui-spinner'
 import { UiPageSpinner } from '@/shared/ui/ui-page-spinner'
+import { UiLogo } from '@/shared/ui/ui-logo'
+import { UiHeader } from '@/shared/ui/ui-header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,10 +21,12 @@ export default function HomePage() {
   })
 
   return (
-    <main
-      // className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-      className={`flex min-h-screen flex-col items-center justify-between p-24 `}
-    >
+
+    <>
+    <UiHeader className='' right={<UiButton variant="secondary">Exit</UiButton>} />
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      
+
       <h1>Work {data?.email}</h1>
       
       <UiButton variant="primary">Hey</UiButton>
@@ -35,6 +39,8 @@ export default function HomePage() {
       <UiLink href={'/'}>Q2EEWGTwaefg</UiLink>
       <UiSpinner className='text-teal-600 h-20 w-20' />
       {/* <UiPageSpinner /> */}
+      {/* <UiLogo className='text-teal-900 font-bold text-sm italic' /> */}
     </main>
+    </>
   )
 }
