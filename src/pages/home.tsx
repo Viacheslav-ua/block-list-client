@@ -1,33 +1,34 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { authControllerGetSessionInfo } from '@/shared/api/generated'
-import { useQuery } from '@tanstack/react-query'
-import { UiButton } from '@/shared/ui/ui-button'
-import { UiTextField } from '@/shared/ui/ui-text-field'
-import { UiSelectField } from '@/shared/ui/ui-select-field'
-import { UiLink } from '@/shared/ui/ui-link'
-import { UiSpinner } from '@/shared/ui/ui-spinner'
-import { UiPageSpinner } from '@/shared/ui/ui-page-spinner'
-import { UiLogo } from '@/shared/ui/ui-logo'
-import { UiHeader } from '@/shared/ui/ui-header'
+import Image from 'next/image';
+import { Inter } from 'next/font/google';
+import { authControllerGetSessionInfo } from '@/shared/api/generated';
+import { useQuery } from '@tanstack/react-query';
+import { UiButton } from '@/shared/ui/ui-button';
+import { UiTextField } from '@/shared/ui/ui-text-field';
+import { UiSelectField } from '@/shared/ui/ui-select-field';
+import { UiLink } from '@/shared/ui/ui-link';
+import { UiSpinner } from '@/shared/ui/ui-spinner';
+import { UiPageSpinner } from '@/shared/ui/ui-page-spinner';
+import { UiLogo } from '@/shared/ui/ui-logo';
+import { UiHeader } from '@/shared/ui/ui-header';
+import { SignOutButton } from '@/features/auth';
+import { useSessionQuery } from '@/entities/session';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function HomePage() {
 
-  const { data } =  useQuery({
-    queryKey: ['session'],
-    queryFn: () => authControllerGetSessionInfo()
-  })
+  const { data } =  useSessionQuery()
+  //   queryKey: ['session'],
+  //   queryFn: () => authControllerGetSessionInfo(),
+  //   staleTime: 5*60*1000,
+
+  // })
 
   return (
 
     <>
-    <UiHeader className='' right={<UiButton variant="secondary">Exit</UiButton>} />
+    <UiHeader className='' right={<div className="flex items-center"><span className='mr-8'>{data?.email}</span><SignOutButton /></div> } />
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      
-
-      <h1>Work {data?.email}</h1>
       
       <UiButton variant="primary">Hey</UiButton>
       <UiButton variant="secondary">Sign Out</UiButton>
